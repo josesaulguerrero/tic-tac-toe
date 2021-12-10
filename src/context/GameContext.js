@@ -54,6 +54,18 @@ export const GameContextProvider = ({ children }) => {
       });
    };
 
+   const isATie = () => {
+      return gameBoard.every(({ isMarked }) => isMarked === true);
+   };
+
+   const isGameOver = (currentPlayerMark) => {
+      if (checkWinner(gameBoard, currentPlayerMark) || isATie()) {
+         return true;
+      } else {
+         return false;
+      }
+   };
+
 
 
    return (
