@@ -20,6 +20,17 @@ export const GameContextProvider = ({ children }) => {
       createCell(6), createCell(7), createCell(8),
    ]);
 
+   const markCell = (cellIndex, playerMark) => {
+      setGameBoard(prevState => {
+         const newState = prevState.map(cell => {
+            return cell.index === cellIndex
+               ? { ...cell, isMarked: true, markedBy: playerMark }
+               : cell;
+         });
+         return newState;
+      });
+   };
+
 
 
    return (
