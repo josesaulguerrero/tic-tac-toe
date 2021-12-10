@@ -66,7 +66,26 @@ export const GameContextProvider = ({ children }) => {
       }
    };
 
+   const swapTurns = () => {
+      setPlayer(prevState => (
+         prevState === "X"
+            ? "O"
+            : "X"
+      ));
+   };
 
+   const gameUtilities = {
+      gameBoard,
+      markCell,
+      findEmptyCells,
+      checkWinner,
+      isGameOver,
+      swapTurns,
+      player,
+      setPlayer,
+      gameMode,
+      setGameMode,
+   };
 
    return (
       <GameContext.Provider value={{}}>
