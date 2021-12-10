@@ -88,7 +88,7 @@ export const GameContextProvider = ({ children }) => {
    };
 
    return (
-      <GameContext.Provider value={{}}>
+      <GameContext.Provider value={gameUtilities}>
          {children}
       </GameContext.Provider>
    );
