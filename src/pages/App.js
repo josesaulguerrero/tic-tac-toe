@@ -11,6 +11,7 @@ export const App = () => {
   const { gameConfig: { gameState } } = useContext(GameContext);
   return (
     <div className="App">
+      hola
       {
         gameState === "no_set_up" && <ConfigWindow />
       }

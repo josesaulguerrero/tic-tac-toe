@@ -1,9 +1,117 @@
 .ConfigWindow {
 	width: 100%;
 	height: 100%;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba($color: #000, $alpha: 0.4);
+	animation: fade 0.2s ease-in-out alternate forwards;
+}
+
+.ConfigInfo {
+	margin-bottom: 30px;
+}
+
+.ConfigForm {
+	width: 90%;
+	max-width: 450px;
+	height: 100%;
+	max-height: 400px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 50px 20px;
+	background-color: lightskyblue;
+	border-radius: 5px;
+}
+
+.ConfigOptions {
+	width: 100%;
+	max-width: 300px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 30px 0 50px;
+}
+
+.optionLabel {
+	width: 110px;
+	height: 110px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	text-align: center;
+}
+
+.ConfigOption {
+	width: 100%;
+	height: 100%;
 	position: absolute;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
+	opacity: 0;
+}
+
+.optionText {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	font-size: 2rem;
+	background-color: rebeccapurple;
+	border-radius: 5px;
+	opacity: 0.8;
+	cursor: pointer;
+	will-change: transform, opacity;
+	transition: transform 0.1s ease-in-out, opacity 0.1s ease-in-out;
+}
+
+.ConfigOption:checked + .optionText {
+	opacity: 1;
+	transform: scale(1.1);
+}
+
+.SubmitConfig {
+	width: 100%;
+	max-width: 200px;
+	height: 50px;
+	border: none;
+	outline: 0;
+	font-size: 2rem;
+	border-radius: 5px;
+	will-change: transform;
+	transition: transform 0.2s ease-in-out;
+	cursor: pointer;
+}
+
+.SubmitConfig:active {
+	transform: scale(0.9);
+}
+
+@media (hover: hover) {
+	.SubmitConfig:hover {
+		transform: scale(1.1);
+	}
+}
+
+@keyframes fade {
+	from {
+		opacity: 0;
+		visibility: hidden;
+	}
+	to {
+		opacity: 1;
+		visibility: visible;
+	}
 }
