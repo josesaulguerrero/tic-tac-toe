@@ -10,18 +10,26 @@ export const GameContextProvider = ({ children }) => {
       markedBy: null
    });
 
-   const [gameConfig, setGameConfig] = useState({
+   const configInitialState = {
       currentPlayer: "X",
       gameMode: null,
       gameState: "no_set_up",
       gameResult: null
-   });
+   };
 
-   const [gameBoard, setGameBoard] = useState([
+   const [gameConfig, setGameConfig] = useState(configInitialState);
+
+   const boardInitialState = [
       createCell(0), createCell(1), createCell(2),
       createCell(3), createCell(4), createCell(5),
       createCell(6), createCell(7), createCell(8),
-   ]);
+   ];
+
+   const [gameBoard, setGameBoard] = useState(boardInitialState);
+
+   const cleanGameBoard = () => {
+      setGameBoard(boardInitialState);
+   };
 
    const startGame = (gameMode) => {
       setGameConfig(prevState => ({
@@ -90,12 +98,16 @@ export const GameContextProvider = ({ children }) => {
 
    const resetMatch = () => {
       // free the cells
+      cleanGameBoard();
       // go back to the game board
+      startGame();
    };
 
    const resetGame = () => {
       //free the cells
+      cleanGameBoard();
       // delete all the previous config
+      setGameConfig(configInitialState);
       // come back to the config window
    };
 
@@ -108,6 +120,8 @@ export const GameContextProvider = ({ children }) => {
       checkWinner,
       swapTurns,
       GameOver,
+      resetMatch,
+      resetGame,
       findEmptyCells,
    };
 
