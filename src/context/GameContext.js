@@ -22,6 +22,13 @@ export const GameContextProvider = ({ children }) => {
       createCell(6), createCell(7), createCell(8),
    ]);
 
+   const startGame = () => {
+      setGameConfig(prevState => ({
+         ...prevState,
+         gameState: "playing",
+      }));
+   };
+
    const markCell = (cellIndex, playerMark) => {
       setGameBoard(prevState => {
          const newState = prevState.map(cell => {
@@ -86,11 +93,13 @@ export const GameContextProvider = ({ children }) => {
 
    const gameUtilities = {
       gameBoard,
+      gameConfig,
+      startGame,
       markCell,
-      findEmptyCells,
       isATie,
       checkWinner,
       swapTurns,
+      findEmptyCells,
    };
 
    return (
