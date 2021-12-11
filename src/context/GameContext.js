@@ -52,8 +52,8 @@ export const GameContextProvider = ({ children }) => {
       });
    };
 
-   const findEmptyCells = () => {
-      return gameBoard.filter(({ isMarked }) => isMarked === false);
+   const findEmptyCells = (board) => {
+      return board.filter(({ isMarked }) => isMarked === false);
    };
 
    const checkWinner = (board, playerMark) => {
