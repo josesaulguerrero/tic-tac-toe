@@ -13,7 +13,8 @@ export const GameContextProvider = ({ children }) => {
    const [gameConfig, setGameConfig] = useState({
       currentPlayer: "X",
       gameMode: null,
-      gameState: "no_set_up"
+      gameState: "no_set_up",
+      gameResult: null
    });
 
    const [gameBoard, setGameBoard] = useState([
@@ -22,10 +23,13 @@ export const GameContextProvider = ({ children }) => {
       createCell(6), createCell(7), createCell(8),
    ]);
 
-   const startGame = () => {
+   const startGame = (gameMode) => {
       setGameConfig(prevState => ({
          ...prevState,
+         currentPlayer: "X",
+         gameMode: gameMode,
          gameState: "playing",
+         gameResult: null
       }));
    };
 
@@ -42,10 +46,6 @@ export const GameContextProvider = ({ children }) => {
 
    const findEmptyCells = () => {
       return gameBoard.filter(({ isMarked }) => isMarked === false);
-   };
-
-   const isATie = () => {
-      return gameBoard.every(({ isMarked }) => isMarked === true);
    };
 
    const checkWinner = (board, playerMark) => {
@@ -67,6 +67,10 @@ export const GameContextProvider = ({ children }) => {
       });
    };
 
+   const isATie = () => {
+      return gameBoard.every(({ isMarked }) => isMarked === true);
+   };
+
    const swapTurns = () => {
       setGameConfig(prevState => ({
          ...prevState,
@@ -76,8 +80,12 @@ export const GameContextProvider = ({ children }) => {
       }));
    };
 
-   const GameOver = (currentPlayerMark) => {
-
+   const GameOver = (gameResult) => {
+      setGameConfig(prevState => ({
+         ...prevState,
+         gameState: "finished",
+         gameResult: gameResult
+      }));
    };
 
    const resetMatch = () => {
@@ -99,6 +107,7 @@ export const GameContextProvider = ({ children }) => {
       isATie,
       checkWinner,
       swapTurns,
+      GameOver,
       findEmptyCells,
    };
 
