@@ -1,13 +1,17 @@
-import React from 'react';
+// libraries and hooks
+import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
+// components
 import { App } from '@pages/App';
 import { GameContextProvider } from '@context/GameContext';
+// styles
+import "@styles/globalStyles.scss";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <StrictMode>
     <GameContextProvider>
       <App />
     </GameContextProvider>
-  </React.StrictMode>,
+  </StrictMode>,
   document.getElementById('root')
 );

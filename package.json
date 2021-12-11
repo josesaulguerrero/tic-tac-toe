@@ -38,6 +38,6 @@
 	"devDependencies": {
 		"customize-cra": "^1.0.0",
 		"react-app-rewired": "^2.1.8",
-		"stylus": "^0.55.0"
+		"sass": "^1.45.0"
 	}
 }
