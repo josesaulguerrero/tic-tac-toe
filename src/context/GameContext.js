@@ -10,9 +10,11 @@ export const GameContextProvider = ({ children }) => {
       markedBy: null
    });
 
-   const [player, setPlayer] = useState("X"); // by default, the first player is always the X.
-
-   const [gameMode, setGameMode] = useState(null); // the user will decide who he wants to play against.
+   const [gameConfig, setGameConfig] = useState({
+      currentPlayer: "X",
+      gameMode: null,
+      gameState: "no_set_up"
+   });
 
    const [gameBoard, setGameBoard] = useState([
       createCell(0), createCell(1), createCell(2),
@@ -35,6 +37,10 @@ export const GameContextProvider = ({ children }) => {
       return gameBoard.filter(({ isMarked }) => isMarked === false);
    };
 
+   const isATie = () => {
+      return gameBoard.every(({ isMarked }) => isMarked === true);
+   };
+
    const checkWinner = (board, playerMark) => {
       const winCombinations = [
          [0, 1, 2],
@@ -54,37 +60,37 @@ export const GameContextProvider = ({ children }) => {
       });
    };
 
-   const isATie = () => {
-      return gameBoard.every(({ isMarked }) => isMarked === true);
-   };
-
-   const isGameOver = (currentPlayerMark) => {
-      if (checkWinner(gameBoard, currentPlayerMark) || isATie()) {
-         return true;
-      } else {
-         return false;
-      }
-   };
-
    const swapTurns = () => {
-      setPlayer(prevState => (
-         prevState === "X"
+      setGameConfig(prevState => ({
+         ...prevState,
+         currentPlayer: prevState.currentPlayer === "X"
             ? "O"
             : "X"
-      ));
+      }));
+   };
+
+   const GameOver = (currentPlayerMark) => {
+
+   };
+
+   const resetMatch = () => {
+      // free the cells
+      // go back to the game board
+   };
+
+   const resetGame = () => {
+      //free the cells
+      // delete all the previous config
+      // come back to the config window
    };
 
    const gameUtilities = {
       gameBoard,
       markCell,
       findEmptyCells,
+      isATie,
       checkWinner,
-      isGameOver,
       swapTurns,
-      player,
-      setPlayer,
-      gameMode,
-      setGameMode,
    };
 
    return (
