@@ -1,7 +1,7 @@
 // libraries and hooks
 import { createContext, useContext } from "react";
 // algorithm
-import { GameContext } from "./GameContext";
+import { GameContext } from "@context/GameContext";
 
 export const MinimaxContext = createContext();
 
