@@ -95,11 +95,11 @@ export const GameContextProvider = ({ children }) => {
       }));
    };
 
-   const resetMatch = () => {
+   const resetMatch = (previousGameMode) => {
       // free the cells
       cleanGameBoard();
       // go back to the game board
-      startGame();
+      startGame(previousGameMode);
    };
 
    const resetGame = () => {
