@@ -7,8 +7,9 @@ import { Cell } from "@components/Cell";
 import "@styles/GameMode.scss";
 // context
 import { GameContext } from "@context/GameContext";
+import { MinimaxContext } from "@context/MinimaxContext";
 
-export const PlayerVSPlayer = () => {
+export const PlayerVSMachine = () => {
    const {
       gameBoard,
       gameConfig: { currentPlayer },
@@ -19,25 +20,31 @@ export const PlayerVSPlayer = () => {
       GameOver,
    } = useContext(GameContext);
 
-   const onClick = (cellIndex) => {
-      // the first thing to do when a cell is clicked is to mark it.
-      const newBoard = markCell(gameBoard, cellIndex, currentPlayer);
-      if (isATie(newBoard)) {
+   const { findBestMove } = useContext(MinimaxContext);
+
+   const validate = (board, player) => {
+      if (isATie(board)) {
          // the game is over and the result is a tie.
          GameOver("It's a tie 😕");
-         return;
       }
-      if (checkWinner(newBoard, currentPlayer)) {
+      if (checkWinner(board, player)) {
          // the game is over and the "currentPlayer" wins.
-         GameOver(`${currentPlayer} wins 😎`);
-         return;
+         GameOver(`${player} wins 😎`);
       }
-      // if it isn't a tie or no one has won, then we have to swap turns.
+   };
+
+   const onClick = async (cellIndex) => {
+      const playerBoard = markCell(gameBoard, cellIndex, "X");
+      validate(playerBoard);
+      swapTurns();
+      const bestMove = findBestMove(JSON.parse(JSON.stringify(playerBoard)), "O");
+      const machineBoard = markCell(playerBoard, bestMove.index, "O");
+      validate(machineBoard, "O");
       swapTurns();
    };
 
    return (
-      <section className="PlayerVSPlayer">
+      <section className="PlayerVSMachine">
          <Board className={currentPlayer}>
             {
                gameBoard.map(({ index, isMarked, markedBy }) => (

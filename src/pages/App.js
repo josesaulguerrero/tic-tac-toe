@@ -5,6 +5,7 @@ import { GameContext } from "@context/GameContext";
 // components
 import { ConfigWindow } from "@components/ConfigWindow";
 import { PlayerVSPlayer } from "@components/PlayerVSPlayer";
+import { PlayerVSMachine } from "@components/PlayerVSMachine";
 import { FinalScreen } from "@components/FinalScreen";
 // styles
 import "@styles/App.scss";
@@ -22,7 +23,7 @@ export const App = () => {
       }
       {
         (gameState === "playing" && gameMode === "playerVSmachine") &&
-        <p>player vs machine</p>
+        <PlayerVSMachine />
       }
       {
         gameState === "finished" && <FinalScreen>{gameResult}</FinalScreen>

@@ -64,7 +64,7 @@ export const GameContextProvider = ({ children }) => {
       });
    };
 
-   const markCell = (cellIndex, playerMark) => {
+   const markCell = (gameBoard, cellIndex, playerMark) => {
       const newState = gameBoard.map(cell => {
          return cell.index === cellIndex
             ? { ...cell, isMarked: true, markedBy: playerMark }

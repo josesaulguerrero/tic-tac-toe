@@ -11,7 +11,7 @@ export const MinimaxContextProvider = ({ children }) => {
 
    const { findEmptyCells, checkWinner } = useContext(GameContext);
 
-   const findBestMove = (board, playerMark) => {
+   const minimax = (board, playerMark) => {
       // the algorithm gets the indexes of all the empty cells.
       const availableCells = findEmptyCells(board);
 
@@ -89,6 +89,10 @@ export const MinimaxContextProvider = ({ children }) => {
       }
       // finally, return the best play found in the tests array.
       return allTestsInformation[bestPlay];
+   };
+
+   const findBestMove = (board, playerMark) => {
+      return minimax(board, playerMark);
    };
 
    return (
