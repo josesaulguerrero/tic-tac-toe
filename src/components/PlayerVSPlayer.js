@@ -1,8 +1,11 @@
+// libraries and hooks
+import { useContext } from "react";
 // components
 import { Board } from "./Board";
+import { Cell } from "./Cell";
 // styles
 import "../assets/styles/GameMode.scss";
-import { useContext } from "react";
+// context
 import { GameContext } from "../context/GameContext";
 
 export const PlayerVSPlayer = () => {
@@ -11,7 +14,11 @@ export const PlayerVSPlayer = () => {
       <section className="PlayerVSPlayer">
          <Board>
             {
-               gameBoard.map(console.log)
+               gameBoard.map(({ index }) => (
+                  <Cell
+                     key={index}
+                  />
+               ))
             }
          </Board>
       </section>
