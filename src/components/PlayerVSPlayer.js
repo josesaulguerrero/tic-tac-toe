@@ -1,15 +1,30 @@
 // libraries and hooks
 import { useContext } from "react";
 // components
-import { Board } from "./Board";
-import { Cell } from "./Cell";
+import { Board } from "@components/Board";
+import { Cell } from "@components/Cell";
 // styles
-import "../assets/styles/GameMode.scss";
+import "@styles/GameMode.scss";
 // context
-import { GameContext } from "../context/GameContext";
+import { GameContext } from "@context/GameContext";
 
 export const PlayerVSPlayer = () => {
-   const { gameBoard } = useContext(GameContext);
+   const { gameBoard, gameConfig: { currentPlayer }, markCell, isATie, checkWinner, swapTurns } = useContext(GameContext);
+
+   const onClick = (cellIndex) => {
+      // the first thing to do when a cell is clicked is to mark it.
+      const newBoard = markCell(cellIndex, currentPlayer);
+      if (isATie(newBoard)) {
+         console.log("tie");
+      }
+
+      if (checkWinner(newBoard, currentPlayer)) {
+         console.log(`${currentPlayer} wins`);
+      }
+
+      swapTurns();
+   };
+
    return (
       <section className="PlayerVSPlayer">
          <Board>
@@ -17,6 +32,8 @@ export const PlayerVSPlayer = () => {
                gameBoard.map(({ index }) => (
                   <Cell
                      key={index}
+                     index={index}
+                     onClick={onClick}
                   />
                ))
             }

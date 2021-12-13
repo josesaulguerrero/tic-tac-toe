@@ -41,19 +41,8 @@ export const GameContextProvider = ({ children }) => {
       }));
    };
 
-   const markCell = (cellIndex, playerMark) => {
-      setGameBoard(prevState => {
-         const newState = prevState.map(cell => {
-            return cell.index === cellIndex
-               ? { ...cell, isMarked: true, markedBy: playerMark }
-               : cell;
-         });
-         return newState;
-      });
-   };
-
-   const findEmptyCells = (board) => {
-      return board.filter(({ isMarked }) => isMarked === false);
+   const isATie = (gameBoard) => {
+      return gameBoard.every(({ isMarked }) => isMarked === true);
    };
 
    const checkWinner = (board, playerMark) => {
@@ -75,8 +64,18 @@ export const GameContextProvider = ({ children }) => {
       });
    };
 
-   const isATie = () => {
-      return gameBoard.every(({ isMarked }) => isMarked === true);
+   const markCell = (cellIndex, playerMark) => {
+      const newState = gameBoard.map(cell => {
+         return cell.index === cellIndex
+            ? { ...cell, isMarked: true, markedBy: playerMark }
+            : cell;
+      });
+      setGameBoard(newState);
+      return newState;
+   };
+
+   const findEmptyCells = (gameBoard) => {
+      return gameBoard.filter(({ isMarked }) => isMarked === false);
    };
 
    const swapTurns = () => {
