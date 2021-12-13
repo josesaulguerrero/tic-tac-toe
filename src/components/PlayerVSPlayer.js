@@ -9,31 +9,43 @@ import "@styles/GameMode.scss";
 import { GameContext } from "@context/GameContext";
 
 export const PlayerVSPlayer = () => {
-   const { gameBoard, gameConfig: { currentPlayer }, markCell, isATie, checkWinner, swapTurns } = useContext(GameContext);
+   const {
+      gameBoard,
+      gameConfig: { currentPlayer },
+      markCell,
+      isATie,
+      checkWinner,
+      swapTurns,
+      GameOver,
+   } = useContext(GameContext);
 
    const onClick = (cellIndex) => {
       // the first thing to do when a cell is clicked is to mark it.
       const newBoard = markCell(cellIndex, currentPlayer);
       if (isATie(newBoard)) {
-         console.log("tie");
+         // the game is over and the result is a tie.
+         GameOver("Tie");
+         return;
       }
-
       if (checkWinner(newBoard, currentPlayer)) {
-         console.log(`${currentPlayer} wins`);
+         // the game is over and the "currentPlayer" wins.
+         GameOver(`${currentPlayer} wins`);
+         return;
       }
-
+      // if it isn't a tie or no one has won, then we have to swap turns.
       swapTurns();
    };
 
    return (
       <section className="PlayerVSPlayer">
-         <Board>
+         <Board className={currentPlayer}>
             {
-               gameBoard.map(({ index }) => (
+               gameBoard.map(({ index, isMarked, markedBy }) => (
                   <Cell
                      key={index}
                      index={index}
-                     onClick={onClick}
+                     onClick={isMarked ? () => { return; } : onClick}
+                     markedBy={markedBy}
                   />
                ))
             }
