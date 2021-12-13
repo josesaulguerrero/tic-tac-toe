@@ -1,9 +1,9 @@
 // libraries and hooks
 import { useContext } from "react";
 // styles
-import "../assets/styles/Board.scss";
+import "@styles/Board.scss";
 // context
-import { GameContext } from "../context/GameContext";
+import { GameContext } from "@context/GameContext";
 
 export const Board = ({ children, className }) => {
    const { gameConfig: { currentPlayer } } = useContext(GameContext);

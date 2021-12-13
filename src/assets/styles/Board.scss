@@ -1,3 +1,5 @@
+@import "./Variables.scss";
+
 .Board {
 	width: 100%;
 	max-width: 400px;
@@ -8,10 +10,12 @@
 	align-items: center;
 	justify-content: center;
 	padding: 0 10px;
-	background-color: rgb(237, 220, 253);
+	background-color: $backgroundColor;
+	border-radius: 5px;
 }
 
 .playerInfo {
+	color: $white;
 	margin-bottom: 30px;
 }
 

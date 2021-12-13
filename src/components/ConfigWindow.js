@@ -1,7 +1,7 @@
 // libraries and hooks
 import { useContext, useState } from "react";
 // context
-import { GameContext } from "../context/GameContext";
+import { GameContext } from "@context/GameContext";
 // styles
 import "@styles/ConfigWindow.scss";
 

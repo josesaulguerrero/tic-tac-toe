@@ -5,11 +5,12 @@ import { GameContext } from "@context/GameContext";
 // components
 import { ConfigWindow } from "@components/ConfigWindow";
 import { PlayerVSPlayer } from "@components/PlayerVSPlayer";
+import { FinalScreen } from "@components/FinalScreen";
 // styles
 import "@styles/App.scss";
 
 export const App = () => {
-  const { gameConfig: { gameState, gameMode } } = useContext(GameContext);
+  const { gameConfig: { gameState, gameMode, gameResult } } = useContext(GameContext);
   return (
     <div className="App">
       {
@@ -20,7 +21,11 @@ export const App = () => {
         <PlayerVSPlayer />
       }
       {
-        (gameState === "playing" && gameMode === "playerVSmachine") && <p>player vs machine</p>
+        (gameState === "playing" && gameMode === "playerVSmachine") &&
+        <p>player vs machine</p>
+      }
+      {
+        gameState === "finished" && <FinalScreen>{gameResult}</FinalScreen>
       }
     </div>
   );

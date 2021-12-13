@@ -1,5 +1,5 @@
 // styles
-import "../assets/styles/Cell.scss";
+import "@styles/Cell.scss";
 
 export const Cell = ({ onClick, index, markedBy }) => {
    return (

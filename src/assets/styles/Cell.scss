@@ -1,9 +1,11 @@
+@import "./Variables.scss";
+
 .Cell {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	position: relative;
-	border: 5px solid goldenrod;
+	border: 7.5px solid $cellBorder;
 	cursor: pointer;
 }
 
@@ -47,8 +49,8 @@
 	content: "";
 	position: absolute;
 	width: 100%;
-	height: 10px;
-	background-color: rebeccapurple;
+	height: 15px;
+	background-color: $crossColor;
 }
 
 .Cell.X::after {
@@ -71,14 +73,14 @@
 .Cell.O::before {
 	width: 90%;
 	height: 90%;
-	background-color: rebeccapurple;
+	background-color: $circleColor;
 	border-radius: 50%;
 }
 
 .Cell.O::after {
-	width: 70%;
-	height: 70%;
-	background-color: white;
+	width: 55%;
+	height: 55%;
+	background-color: $backgroundColor;
 	border-radius: 50%;
 }
 
@@ -90,9 +92,8 @@
 		content: "";
 		position: absolute;
 		width: 100%;
-		height: 10px;
-		background-color: rebeccapurple;
-		opacity: 0.5;
+		height: 15px;
+		background-color: $crossColor--hover;
 	}
 
 	.X .Cell:not(.X):not(.O):hover::after {
@@ -109,20 +110,19 @@
 	.O .Cell:not(.X):not(.O)::before {
 		content: "";
 		position: absolute;
-		opacity: 0.5;
 	}
 
 	.O .Cell:not(.X):not(.O):hover::before {
 		width: 90%;
 		height: 90%;
-		background-color: rebeccapurple;
+		background-color: $circleColor--hover;
 		border-radius: 50%;
 	}
 
 	.O .Cell:not(.X):not(.O):hover::after {
-		width: 70%;
-		height: 70%;
-		background-color: white;
+		width: 55%;
+		height: 55%;
+		background-color: $backgroundColor;
 		border-radius: 50%;
 	}
 }

@@ -24,12 +24,12 @@ export const PlayerVSPlayer = () => {
       const newBoard = markCell(cellIndex, currentPlayer);
       if (isATie(newBoard)) {
          // the game is over and the result is a tie.
-         GameOver("Tie");
+         GameOver("It's a tie 😕");
          return;
       }
       if (checkWinner(newBoard, currentPlayer)) {
          // the game is over and the "currentPlayer" wins.
-         GameOver(`${currentPlayer} wins`);
+         GameOver(`${currentPlayer} wins 😎`);
          return;
       }
       // if it isn't a tie or no one has won, then we have to swap turns.
