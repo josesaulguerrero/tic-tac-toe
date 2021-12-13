@@ -82,23 +82,6 @@
 	transform: scale(1.1);
 }
 
-.SubmitConfig {
-	width: 100%;
-	max-width: 200px;
-	height: 50px;
-	border: none;
-	outline: 0;
-	font-size: 2rem;
-	border-radius: 5px;
-	will-change: transform;
-	transition: transform 0.2s ease-in-out;
-	cursor: pointer;
-}
-
-.SubmitConfig:active {
-	transform: scale(0.9);
-}
-
 @media (hover: hover) {
 	.SubmitConfig:hover {
 		transform: scale(1.1);

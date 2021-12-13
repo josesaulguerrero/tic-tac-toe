@@ -1,5 +1,7 @@
 // libraries and hooks
 import { useContext, useState } from "react";
+// components
+import { Button } from "@components/Button";
 // context
 import { GameContext } from "@context/GameContext";
 // styles
@@ -49,7 +51,7 @@ export const ConfigWindow = () => {
                   <p className="optionText">🎮<br /> vs <br />🤖</p>
                </label>
             </section>
-            <input className="SubmitConfig" type="submit" value="Start Game!" />
+            <Button type="submit" >Start Game!</Button>
          </form>
       </section>
    );

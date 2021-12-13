@@ -1,0 +1,16 @@
+.Button {
+	width: 100%;
+	max-width: 200px;
+	height: 50px;
+	border: none;
+	outline: 0;
+	font-size: 2rem;
+	border-radius: 5px;
+	will-change: transform;
+	transition: transform 0.2s ease-in-out;
+	cursor: pointer;
+}
+
+.Button:active {
+	transform: scale(0.9);
+}
