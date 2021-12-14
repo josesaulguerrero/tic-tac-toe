@@ -33,13 +33,20 @@ export const PlayerVSMachine = () => {
       }
    };
 
-   const onClick = async (cellIndex) => {
+   const onClick = (cellIndex) => {
+      // the first thing to do is to mark the cell with the given index.
       const playerBoard = markCell(gameBoard, cellIndex, "X");
+      // then validate if it's a game over.
       validate(playerBoard);
+      // the turns are swapped
       swapTurns();
+      // we call the minimax algorithm to find the best move.
       const bestMove = findBestMove(JSON.parse(JSON.stringify(playerBoard)), "O");
+      // we mark the cell with the returned index by the algorithm.
       const machineBoard = markCell(playerBoard, bestMove.index, "O");
+      // again we validate whether it's a game over.
       validate(machineBoard, "O");
+      // and the turns are swapped again.
       swapTurns();
    };
 
