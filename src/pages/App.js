@@ -18,11 +18,11 @@ export const App = () => {
         gameState === "no_set_up" && <ConfigWindow />
       }
       {
-        (gameState === "playing" && gameMode === "playerVSplayer") &&
+        ((gameState === "playing" || gameState === "finished") && gameMode === "playerVSplayer") &&
         <PlayerVSPlayer />
       }
       {
-        (gameState === "playing" && gameMode === "playerVSmachine") &&
+        ((gameState === "playing" || gameState === "finished") && gameMode === "playerVSmachine") &&
         <PlayerVSMachine />
       }
       {

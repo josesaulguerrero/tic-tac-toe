@@ -23,13 +23,13 @@ export const PlayerVSMachine = () => {
    const { findBestMove } = useContext(MinimaxContext);
 
    const validate = (board, player) => {
-      if (isATie(board)) {
-         // the game is over and the result is a tie.
-         GameOver("It's a tie 😕");
-      }
       if (checkWinner(board, player)) {
          // the game is over and the "currentPlayer" wins.
          GameOver(`${player} wins 😎`);
+      }
+      if (isATie(board)) {
+         // the game is over and the result is a tie.
+         GameOver("It's a tie 😕");
       }
    };
 

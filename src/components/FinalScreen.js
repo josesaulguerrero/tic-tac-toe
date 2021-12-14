@@ -4,6 +4,8 @@ import { useContext } from "react";
 import { Button } from "./Button";
 // context
 import { GameContext } from "../context/GameContext";
+// styles
+import "@styles/FinalScreen.scss";
 
 export const FinalScreen = ({ children }) => {
    const { resetMatch, resetGame, gameConfig: { gameMode } } = useContext(GameContext);
