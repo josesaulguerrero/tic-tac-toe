@@ -7,6 +7,8 @@ import { GameContextProvider } from '@context/GameContext';
 import { MinimaxContextProvider } from '@context/MinimaxContext';
 // styles
 import "@styles/globalStyles.scss";
+// service worker
+import { registerServiceWorker } from './RegisterServiceWorker';
 
 ReactDOM.render(
   <StrictMode>
@@ -18,3 +20,5 @@ ReactDOM.render(
   </StrictMode>,
   document.getElementById('root')
 );
+
+registerServiceWorker();
