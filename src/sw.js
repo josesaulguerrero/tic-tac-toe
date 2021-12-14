@@ -10,6 +10,8 @@ clientsClaim();
 self.skipWaiting();
 precacheAndRoute(self.__WB_MANIFEST);
 
+// ------------------------------------------
+// this will cache the fonts from google fonts
 registerRoute(
    ({ url }) => url.origin === "https://fonts.googleapis.com",
    new StaleWhileRevalidate({
@@ -33,22 +35,8 @@ registerRoute(
    })
 );
 
-registerRoute(
-   ({ request }) => request.destination === "assets/images",
-   new CacheFirst({
-      cacheName: "images",
-      plugins: [
-         new CacheableResponse({
-            statuses: [0, 200]
-         }),
-         new ExpirationPlugin({
-            maxEntries: 60,
-            maxAgeSeconds: 30 * 24 * 60 * 60,
-         })
-      ]
-   })
-);
-
+// ---------------------------------------------
+// this will cache the used script and stylesheets
 registerRoute(
    ({ request }) => request.destination === "script" || request.destination === "style",
    new StaleWhileRevalidate({
