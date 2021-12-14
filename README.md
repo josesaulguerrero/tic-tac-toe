@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# Tic-Tac-Toe game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is an amazing tic-tac-toe game where you can choose to play against a friend or against your computer 🤖. The computer uses the [minimax algorithm](https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-1-introduction/?ref=lbp) to find the best move and way to play, so it's basically unbeatable 😎.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+-   [Overview](#overview)
+-   [The challenge](#the-challenge)
+-   [Screenshot](#screenshot)
+-   [Links](#links)
+-   [My process](#my-process)
+-   [Built with](#built-with)
+-   [What I learned](#what-i-learned)
+-   [Continued development](#continued-development)
+-   [Useful resources](#useful-resources)
+-   [Author](#author)
 
-### `yarn start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### The challenge
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Users should be able to:
 
-### `yarn test`
+-   Choose who they want to play against.
+-   See who won after the game is over.
+-   Restart the previous match after the game is over.
+-   Reset the game configuration.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Screenshot
 
-### `yarn build`
+![screenshot](https://i.postimg.cc/Qtkd79c5/funny-tic-tac-toe-netlify-app.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Links
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-   [Solution URL](https://github.com/josesaulguerrero/tic-tac-toe)
+-   [Live site URL ](https://funny-tic-tac-toe.netlify.app/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## My process
 
-### `yarn eject`
+### Built with
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+-   Semantic HTML5 markup
+-   Flexbox
+-   Mobile-first workflow
+-   [Yarn](https://yarnpkg.com/) - Node package manager
+-   [Webpack](https://webpack.js.org/) - Module bundler
+-   [Babel](https://babeljs.io/) - JS code transpiler
+-   [React](https://reactjs.org/) - JS library
+-   [Sass](https://sass-lang.com/) - For styles
+-   [Workbox](https://developers.google.com/web/tools/workbox/guides/get-started) - For managing the cache and service workers
+-   [react-app-rewired](https://github.com/timarney/react-app-rewired) and [customize-cra](https://github.com/arackaf/customize-cra) - These libraries modify the behavior of create-react-app and allow you to customize the webpack files. It must be used carefully because things can easily break.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### What I learned
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Building this project helped me learn to use and improve my knowledge and programming logic by:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+-   Using the minimax algorithm to make your machine unbeatable.
+-   Using `React.Context` to provide all the necessary functions.
+-   Using pre-processors such as Sass.
+-   Managing my service workers with Workbox.
 
-## Learn More
+### Continued development
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+-   To make the computer "smarter" I use the minimax algorithm, which basically makes it unbeatable.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+-   My stylesheets use Sass, a pre-processor that allows you to write cleaner CSS code and re-use your own style rules, so that you don't repeat yourself.
 
-### Code Splitting
+-   I used CSS pseudo-elements and pseudo-classes to create interesting animations when an unmarked cell is hovered.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+-   To manage my service workers, I used Workbox, a set of libraries that google provides to help you covert your apps into PWAs that can be installed like a native app and work even when offline.
 
-### Analyzing the Bundle Size
+-   Implemented the `@media (hover: hover) {}` CSS media query, which is used to detect if the user's device has a cursor, to add hover transitions.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Useful resources
 
-### Making a Progressive Web App
+-   [How to integrate Workbox in your React App](https://www.youtube.com/watch?v=uKNLaleXztc&list=PLD8nQCAhR3tTXYOhau-RTfZQ4uGvco7XQ&ab_channel=ImranSayed-CodeytekAcademy) - These videos were really helpful as they helped me integrate all the workbox libraries into my existing application.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+-   [What is the minimax algorithm?](https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-1-introduction/?ref=lbp) - This article taught me what is the minimax algorithm and how it works.
 
-### Advanced Configuration
+-   [Creating a tic-tac-toe game with the minimax algorithm](https://www.youtube.com/watch?v=trKjYdBASyQ&t=1134s) - This video helped me find out how I could create the minimax using JavaScript.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+-   [How to create your own Minimax Algorithm](https://www.freecodecamp.org/news/minimax-algorithm-guide-how-to-create-an-unbeatable-ai/) - This article helped me create my own minimax algorithm and I used this version in my tic-tac-toe game.
 
-### Deployment
+## Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   Website - [Jose Saúl Guerrero Serrano](https://joseguerreroserrano.netlify.app/)
+-   Github - [@josesaulguerrero](https://github.com/josesaulguerrero)
