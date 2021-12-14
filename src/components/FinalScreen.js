@@ -12,9 +12,11 @@ export const FinalScreen = ({ children }) => {
 
    return (
       <section className="FinalScreen">
-         <p>{children}</p>
-         <Button onClick={() => resetMatch(gameMode)} >Restart Match</Button>
-         <Button onClick={resetGame} >Reset Game</Button>
+         <section className="FinalScreenOptions">
+            <h2 className="GameResult" >{children}</h2>
+            <Button onClick={() => resetMatch(gameMode)} >Restart Match</Button>
+            <Button onClick={resetGame} >Reset Game</Button>
+         </section>
       </section>
    );
 };
